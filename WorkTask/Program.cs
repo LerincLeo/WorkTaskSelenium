@@ -20,31 +20,54 @@ namespace WorkTask
         public void ClearLogIn()
         {
             //Clicking the login button.
-            SeleniumSetClass.ElementClick(driver, "//*[@id='login-button']", "XPath");
+            SeleniumSetClass.ElementClick(driver, "//input[@id='login-button']", "XPath");
         }
         [Test, Category("Wrong")]
         public void WrongUser()
         {   //Entering a wrong username.
-            SeleniumSetClass.ElementText(driver, "//*[@id='user-name']", "wrong_user", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@id='user-name']", "wrong_user", "XPath");
             //Entering a wrong password.
-            SeleniumSetClass.ElementText(driver, "//*[@id='password']", "bad_sauce", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@id='password']", "bad_sauce", "XPath");
             //Clicking the login button.
-            SeleniumSetClass.ElementClick(driver, "//*[@id='login-button']", "XPath");
+            SeleniumSetClass.ElementClick(driver, "//input[@id='login-button']", "XPath");
         }
         [Test, Category("Correct")]
         public void LogInWithUser()
         {   //Entering a correct username.
-            SeleniumSetClass.ElementText(driver, "//*[@id='user-name']", "standard_user", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@id='user-name']", "standard_user", "XPath");
             //Entering a correct password.
-            SeleniumSetClass.ElementText(driver, "//*[@id='password']", "secret_sauce", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@id='password']", "secret_sauce", "XPath");
             //Clicking the login button.
-            SeleniumSetClass.ElementClick(driver, "//*[@id='login-button']", "XPath");
+            SeleniumSetClass.ElementClick(driver, "//input[@id='login-button']", "XPath");        
+            //add to cart Sauce Labs Backpack
+            SeleniumSetClass.ElementClick(driver, "//button[@id='add-to-cart-sauce-labs-backpack']", "XPath");
+            //add to cart Sauce Labs Fleece Jacket
+            SeleniumSetClass.ElementClick(driver, "//button[@id='add-to-cart-sauce-labs-fleece-jacket']", "XPath");
+            //go for the checkout
+            SeleniumSetClass.ElementClick(driver, "//a[@class='shopping_cart_link']", "XPath");
+            SeleniumSetClass.ElementClick(driver, "//button[@id='checkout']", "XPath");
+            //input neccesary things
+            SeleniumSetClass.ElementText(driver, "//input[@name='firstName']", "secret", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@name='lastName']", "sauce", "XPath");
+            SeleniumSetClass.ElementText(driver, "//input[@name='postalCode']", "32351", "XPath");
+            //proceed to payment
+            SeleniumSetClass.ElementClick(driver, "//input[@name='continue']", "XPath");
+            //payment complete
+            SeleniumSetClass.ElementClick(driver, "//button[@name='finish']", "XPath");
+            //go back to homepage with products
+            SeleniumSetClass.ElementClick(driver, "//button[@name='back-to-products']", "XPath");
+
+            //logout not working...
+            /*
+            SeleniumSetClass.ElementClick(driver, "//button[@id='react-burger-menu-btn']", "XPath");
+            SeleniumSetClass.ElementClick(driver, "//button[@id='react-burger-cross-btn']", "XPath");
+            */
         }
         [TearDown]
         public void BrowserCleanup()
-        {   
+        {
+            Thread.Sleep(3000);
             //Closing the program...
-            Thread.Sleep(5000);
             driver.Close();
         }
     }

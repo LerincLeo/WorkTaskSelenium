@@ -56,12 +56,6 @@ namespace WorkTask
             SeleniumSetClass.ElementClick(driver, "//button[@name='finish']", "XPath");
             //go back to homepage with products
             SeleniumSetClass.ElementClick(driver, "//button[@name='back-to-products']", "XPath");
-
-            //logout not working...
-            /*
-            SeleniumSetClass.ElementClick(driver, "//button[@id='react-burger-menu-btn']", "XPath");
-            SeleniumSetClass.ElementClick(driver, "//button[@id='react-burger-cross-btn']", "XPath");
-            */
         }
         [TearDown]
         public void BrowserCleanup()
